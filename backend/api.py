@@ -1,6 +1,6 @@
 from ninja import NinjaAPI
-from ..app.api import router as api_router
+from app.api import router
 
-router = NinjaAPI()
+api_router = NinjaAPI() 
 
-router.add_router("/clientes", api_router)
+api_router.add_router("/clientes", router)

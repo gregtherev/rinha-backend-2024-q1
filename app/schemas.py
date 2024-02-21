@@ -1,6 +1,6 @@
 from datetime import datetime
 from ninja import ModelSchema, Schema
-from typing import List
+from typing import List, Optional
 from .models import Transaction
 
 
@@ -11,14 +11,14 @@ class BalanceSchema(Schema):
 
 
 class TransactionSchema(ModelSchema):
-    class Config:
+    class Meta:
         model = Transaction
-        exclude = ['cliente']
+        exclude = ['cliente', 'status']
 
 
 class StatementSchema(Schema):
     saldo: BalanceSchema
-    ultimas_transacoes: List[Transaction]
+    ultimas_transacoes: Optional[List[TransactionSchema]]
     
 
 class PostTransactionSchema(Schema):
