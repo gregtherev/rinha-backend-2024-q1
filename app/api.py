@@ -21,7 +21,7 @@ def get_data(request, user_id: int) -> StatementSchema:
     return 200, statement.dict()
 
 
-@router.post('/{user_id}/Transaction')
+@router.post('/{user_id}/transaction')
 def post_transaction(request, user_id: int, data: PostTransactionSchema) -> dict:
     u = user_exists(user_id)
     if not u:
